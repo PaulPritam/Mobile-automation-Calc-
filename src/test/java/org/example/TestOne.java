@@ -40,12 +40,12 @@ public class TestOne {
 
         System.out.println("Application Started: ");
 
-//        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-//
-//        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
-//        Thread.sleep(2000);
-//        driver.findElement(By.xpath("//android.widget.Button[@index='7']")).click();
-//        Thread.sleep(2000);
+        driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+
+        driver.findElement(By.xpath("//android.widget.Button[@index='1']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//android.widget.Button[@index='7']")).click();
+        Thread.sleep(2000);
 
     }
 }

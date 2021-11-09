@@ -1,18 +1,17 @@
-package org.example;
+package com.bridgelabz.appium.base;
 
-import org.openqa.selenium.By;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Base {
-
-    static WebDriver driver;
+    public AndroidDriver driver;
 
     @BeforeTest
     public void setup() throws InterruptedException, MalformedURLException {
@@ -27,13 +26,7 @@ public class Base {
 
         Thread.sleep(6000);
 
-        driver = new RemoteWebDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
+        driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), cap);
 
     }
-
-//    @AfterTest
-//    public void clearScreen()
-//    {
-//        driver.findElement(By.xpath("//android.widget.Button[@text='CLR']")).click();
-//    }
 }

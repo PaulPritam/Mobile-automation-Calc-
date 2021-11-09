@@ -1,6 +1,9 @@
 package org.example;
 
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
@@ -17,7 +20,9 @@ public class CalculatorTest extends Base {
         Thread.sleep(2000);
         driver.findElement(By.xpath("//android.widget.Button[@index='7']")).click();
         Thread.sleep(2000);
+        String result = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.android.calculator2:id/result']")).getText();
 
+        Assert.assertEquals(result,"10");
     }
 
     @Test(priority = 2)
@@ -28,6 +33,10 @@ public class CalculatorTest extends Base {
         Thread.sleep(2000);
         driver.findElement(By.xpath("//android.widget.Button[@index='7']")).click();
         Thread.sleep(2000);
+
+        String result = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.android.calculator2:id/result']")).getText();
+
+        Assert.assertEquals(result,"6");
     }
 
     @Test(priority = 3)
@@ -38,6 +47,10 @@ public class CalculatorTest extends Base {
         Thread.sleep(2000);
         driver.findElement(By.xpath("//android.widget.Button[@index='7']")).click();
         Thread.sleep(2000);
+
+        String result = driver.findElement(By.xpath("//android.widget.TextView[@resource-id='com.android.calculator2:id/result']")).getText();
+
+        Assert.assertEquals(result,"16");
     }
 
     @AfterMethod
@@ -45,4 +58,5 @@ public class CalculatorTest extends Base {
         driver.findElement(By.xpath("//android.widget.Button[@text='=']")).click();
         Thread.sleep(2000);
     }
+
 }
