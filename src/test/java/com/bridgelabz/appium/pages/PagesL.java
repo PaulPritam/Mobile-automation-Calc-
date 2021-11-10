@@ -72,7 +72,7 @@ public class PagesL extends Base{
 
     public void clickMinus()
     {
-        driver.findElement(By.xpath("//android.widget.Button[@text='=']")).click();
+        driver.findElement(By.xpath("//android.widget.Button[@text='−']")).click();
     }
 
     public void clickMultiply()

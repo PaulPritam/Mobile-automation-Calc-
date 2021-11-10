@@ -1,16 +1,18 @@
 package com.bridgelabz.appium.pages;
 
+import com.bridgelabz.appium.test.ExtentReportImplementation;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Base {
+public class Base extends ExtentReportImplementation {
     public static AndroidDriver driver;
 
     @BeforeTest
@@ -34,4 +36,6 @@ public class Base {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
     }
+
 }
+
