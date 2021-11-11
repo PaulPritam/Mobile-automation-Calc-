@@ -2,10 +2,7 @@ package com.bridgelabz.appium.pages;
 
 import com.bridgelabz.appium.test.ExtentReportImplementation;
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 
 import java.net.MalformedURLException;

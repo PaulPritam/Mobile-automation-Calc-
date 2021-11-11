@@ -3,97 +3,96 @@ package com.bridgelabz.appium.test;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.bridgelabz.appium.pages.Base;
-import com.bridgelabz.appium.pages.PagesL;
+import com.bridgelabz.appium.pages.CalculatorPage;
+import com.bridgelabz.appium.pages.Operations;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
+
+import java.io.File;
+import java.io.IOException;
 
 public class CalcTest extends Base {
 
+    Operations operation = new Operations();
+    ExtentTest test1;
+
     @Test(priority = 1)
-    public void add() {
-        ExtentTest test1 = extent.createTest("Addition Test",
+    public void perform_Addition_Operation_In_Calc() throws InterruptedException {
+
+        test1 = extent.createTest("Addition Test",
                 "Adds two numbers and matches the result");
 
-        PagesL page = new PagesL(driver);
-
         test1.log(Status.INFO, "Addition Test started ");
-
-        page.clickNumber2();
-        page.clickPlus();
-        page.clickNumber8();
-        page.clickEquals();
-
+        operation.addition_Of_Two_Numbers_In_Calculator();
         String actualResult = driver.findElement(By.id("result")).getText();
-        String expectedResult = "10";
-
         test1.log(Status.PASS, "Addition Test passed ");
-
-        Assert.assertEquals(expectedResult, actualResult);
+        Assert.assertEquals(actualResult, "10");
 
         test1.log(Status.INFO, "Addition Test completed ");
     }
 
     @Test(priority = 2)
-    public void subtract() throws InterruptedException {
+    public void perform_Subtraction_Operation_In_Calc() throws InterruptedException {
 
-        ExtentTest test1 = extent.createTest("Subtraction Test",
+        test1 = extent.createTest("Subtraction Test",
                 "Subtracts two numbers and matches the result");
 
-        PagesL page = new PagesL(driver);
-
         test1.log(Status.INFO, "Subtraction Test started ");
-
-        Thread.sleep(3000);
-
-        page.clickNumber8();
-        page.clickMinus();
-        page.clickNumber2();
-        page.clickEquals();
-
+        operation.subtraction_Of_Two_Numbers_In_Calculator();
         String actualResult = driver.findElement(By.id("result")).getText();
-        String expectedResult = "6";
-
         test1.log(Status.PASS, "Subtraction Test passed ");
-
-        Assert.assertEquals(expectedResult, actualResult);
+        Assert.assertEquals(actualResult, "6");
 
         test1.log(Status.INFO, "Subtraction Test completed ");
-
     }
 
     @Test(priority = 3)
-    public void multiply() throws InterruptedException {
+    public void perform_Multiplication_Operation_In_Calc() throws InterruptedException {
 
-        ExtentTest test1 = extent.createTest("Multiplication Test",
+        test1 = extent.createTest("Multiplication Test",
                 "Multiplies two numbers and matches the result");
 
-        PagesL page = new PagesL(driver);
-
         test1.log(Status.INFO, "Multiplication Test started ");
-
-        Thread.sleep(3000);
-
-        page.clickNumber2();
-        page.clickMultiply();
-        page.clickNumber8();
-        page.clickEquals();
-
+        operation.multiplication_Of_Two_Numbers_In_Calculator();
         String actualResult = driver.findElement(By.id("result")).getText();
-        String expectedResult = "16";
-
         test1.log(Status.PASS, "Multiplication Test passed ");
-
-        Assert.assertEquals(expectedResult, actualResult);
+        Assert.assertEquals(actualResult, "16");
 
         test1.log(Status.INFO, "Multiplication Test completed ");
+    }
 
+    @Test(priority = 4)
+    public void perform_Division_Operation_In_Calc() throws InterruptedException {
+
+        test1 = extent.createTest("Multiplication Test",
+                "Multiplies two numbers and matches the result");
+
+        test1.log(Status.INFO, "Multiplication Test started ");
+        operation.division_Of_Two_Numbers_In_Calculator();
+        String actualResult = driver.findElement(By.id("result")).getText();
+        test1.log(Status.PASS, "Multiplication Test passed ");
+        Assert.assertEquals(actualResult, "0.25");
+
+        test1.log(Status.INFO, "Multiplication Test completed ");
     }
 
     @AfterMethod
-    public void pressCancel() {
-        driver.findElement(By.id("clr")).click();
+    public void clearScreen() {
+        CalculatorPage page = new CalculatorPage();
+        page.pressClearScreen();
     }
 
+    @AfterTest
+    public void takeScreenshot_Of_DeviceScreen() throws IOException {
+
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("C:\\Users\\Pritam Paul\\Downloads\\" +
+                "demo1\\AppiumIntro\\screenshots\\targetScreenshot.jpg"));
+    }
 }
