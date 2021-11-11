@@ -13,7 +13,8 @@ public class ExtentReportImplementation {
 
     @BeforeSuite
     public void reportSetup() {
-        htmlReporter = new ExtentHtmlReporter("extent.html");
+        htmlReporter = new ExtentHtmlReporter("C:\\Users\\Pritam Paul\\" +
+                "Downloads\\demo1\\AppiumIntro\\ExtentReports\\extent.html");
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
     }
