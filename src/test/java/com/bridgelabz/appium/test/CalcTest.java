@@ -7,6 +7,8 @@ import com.bridgelabz.appium.pages.CalculatorPage;
 import com.bridgelabz.appium.pages.Operations;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.Assert;
@@ -22,8 +24,12 @@ public class CalcTest extends Base {
     Operations operation = new Operations();
     ExtentTest test1;
 
+    private static final Logger LOGGER = LogManager.getLogger(CalcTest.class);
+
     @Test(priority = 1)
     public void perform_Addition_Operation_In_Calc() throws InterruptedException {
+
+        LOGGER.info(" This is a basic info message ");
 
         test1 = extent.createTest("Addition Test",
                 "Adds two numbers and matches the result");
@@ -40,6 +46,8 @@ public class CalcTest extends Base {
     @Test(priority = 2)
     public void perform_Subtraction_Operation_In_Calc() throws InterruptedException {
 
+        LOGGER.warn(" This is to check warning message ");
+
         test1 = extent.createTest("Subtraction Test",
                 "Subtracts two numbers and matches the result");
 
@@ -55,6 +63,8 @@ public class CalcTest extends Base {
     @Test(priority = 3)
     public void perform_Multiplication_Operation_In_Calc() throws InterruptedException {
 
+        LOGGER.fatal(" This is a FATAL error message ");
+
         test1 = extent.createTest("Multiplication Test",
                 "Multiplies two numbers and matches the result");
 
@@ -69,6 +79,8 @@ public class CalcTest extends Base {
 
     @Test(priority = 4)
     public void perform_Division_Operation_In_Calc() throws InterruptedException {
+
+        LOGGER.error(" This is an ERROR message ");
 
         test1 = extent.createTest("Multiplication Test",
                 "Multiplies two numbers and matches the result");
